@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"azurePolicy_assignment_prd_mgmt_group_prd_tenant","Source":"../modules/azurePolicy_assignment","Dir":""},{"Key":"azurePolicy_prd_mgmt_group_prd_tenant","Source":"../modules/azurePolicy","Dir":""}]}
