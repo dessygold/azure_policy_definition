@@ -17,7 +17,10 @@ variable "allowedRegions" {
 variable "listOfAllowedSKUs" {
   description = "allowed SKUs for Virtual Machines"
 }
-
+variable "listOfResourceTypes" {
+  description = " describe your variable"
+   default     = ""
+}
 # variable "allowedLocation" {
 #   type = string
 #   description = "(optional) describe your variable"

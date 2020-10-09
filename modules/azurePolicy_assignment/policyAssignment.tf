@@ -16,6 +16,9 @@ resource "azurerm_policy_assignment" "set-assignment-1" {
     },
     "listOfAllowedSKUs": {
       "value": ${jsonencode(var.listOfAllowedSKUs)}
+    },
+    "listOfResourceTypes": {
+      "value": ${jsonencode(var.listOfResourceTypes)}
     }
 }
 PARAMETERS

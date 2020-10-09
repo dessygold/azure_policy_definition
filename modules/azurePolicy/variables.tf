@@ -12,3 +12,7 @@ variable "listOfAllowedSKUs" {
   description = "allowed SKUs for Virtual Machines"
 }
 
+variable "listOfResourceTypes" {
+  description = "allowed SKUs for Virtual Machines"
+}
+

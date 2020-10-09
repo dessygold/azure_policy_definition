@@ -6,9 +6,10 @@
 
 ## Prd Mgmt Group - Prd Tenant
 module "azurePolicy_prd_mgmt_group_prd_tenant" {
-  source = "../modules/azurePolicy"
-  allowedRegions    = var.allowed_Regions
-  listOfAllowedSKUs = var.allowed_VM_SKUs
+  source = "./modules/azurePolicy"
+  allowedRegions      = var.allowed_Regions
+  listOfAllowedSKUs   = var.allowed_VM_SKUs
+  listOfResourceTypes = var.listOfResourceTypes
   mgmtGroupName     = data.azurerm_management_group.prd.name
 }
 
@@ -35,11 +36,11 @@ module "azurePolicy_prd_mgmt_group_prd_tenant" {
 # }
 
 module "azurePolicy_assignment_prd_mgmt_group_prd_tenant" {
-  source = "../modules/azurePolicy_assignment"
+  source = "./modules/azurePolicy_assignment"
   policy_set_definition_id = module.azurePolicy_prd_mgmt_group_prd_tenant.policy_set_definition_1_id
   allowedRegions  = var.allowed_Regions
   listOfAllowedSKUs = var.allowed_VM_SKUs
-  policy_assignment_scope = data.azurerm_management_group.prd.name
+  policy_assignment_scope = data.azurerm_management_group.prd.id
 }
 
 # module "azurePolicy_assignment_staging_mgmt_group_prd_tenant" {

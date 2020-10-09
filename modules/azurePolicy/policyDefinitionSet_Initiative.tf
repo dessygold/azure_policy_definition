@@ -24,6 +24,14 @@ resource "azurerm_policy_set_definition" "policy-set-1" {
         "displayName": "allowed vm skus",
         "strongType": "VMSKUs"
       }
+    },
+    "listOfResourceTypes": {
+      "type": "Array",
+      "metadata": {
+        "description": "Audit diagnostic setting for selected resource types.",
+        "displayName": "Resource Types",
+        "strongType": "resourceTypes"
+      }
     }
 }
 PARAMETERS
@@ -40,11 +48,9 @@ PARAMETERS
 # Custom: Allowed Regions (Locations)
   policy_definition_reference {
     policy_definition_id = azurerm_policy_definition.regions.id
-    parameter_values     = <<VALUE
-    {
-      "listofAllowedRegions": {"value": "[parameters('allowedRegions')]"}
+    parameters = {
+        allowedRegions = "[parameters('allowedRegions')]"
     }
-    VALUE
   }
 
 # }
@@ -114,10 +120,13 @@ PARAMETERS
   policy_definition_reference {
     policy_definition_id =  "/providers/Microsoft.Authorization/policyDefinitions/b7ddfbdc-1260-477d-91fd-98bd9be789a6"
   }
-  # # Built-In (listofresourcetype parameter): Audit diagnostic setting
-  # policy_definition_reference {
-  #   policy_definition_id =  "/providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9"
-  # }
+  # Built-In (listofresourcetype parameter): Audit diagnostic setting
+  policy_definition_reference {
+    policy_definition_id =  "/providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9"
+    parameters = {
+        listOfResourceTypes = "[parameters('listOfResourceTypes')]"
+    }
+  }
 
   # Built-In: Audit Linux machines that allow remote connections from accounts without passwords
   policy_definition_reference {

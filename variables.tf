@@ -31,6 +31,10 @@ variable "allowed_Regions" {
   ]
 }
 
+variable "listOfResourceTypes" {
+  description = "(optional) describe your variable"
+  default     = ""
+}
 #The variables below are specific to this deployment
 
 # variable "prd_tenant_root_mgmt_group_name" {
